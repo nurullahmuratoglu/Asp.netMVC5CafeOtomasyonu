@@ -1,0 +1,26 @@
+﻿@model Cafe_Otomasyonu.Models.siniflar.Masa
+@{
+    ViewBag.Title = "MasaGuncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Masa güncelle</h2>
+
+@using (Html.BeginForm("MasaGuncelle", "Masa", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.MasaAd)
+        @Html.TextBoxFor(x => x.MasaAd, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.Masaid)
+
+
+
+    </div>
+    <br />
+    <button class="btn btn-facebook">
+        Güncelle
+    </button>
+}
+
+
+

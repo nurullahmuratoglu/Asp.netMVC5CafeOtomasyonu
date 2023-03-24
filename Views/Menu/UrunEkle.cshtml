@@ -1,0 +1,28 @@
+﻿@model Cafe_Otomasyonu.Models.siniflar.Urun
+@{
+    ViewBag.Title = "UrunEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Yeni Ürün Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.UrunAd)
+    @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Marka_Icerik)
+    @Html.TextBoxFor(x => x.Marka_Icerik, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.SatisFiyat)
+    @Html.TextBoxFor(x => x.SatisFiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Kategori)
+    @Html.DropDownListFor(x => x.Kategoriid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    @*@Html.TextBoxFor(x => x.Kategoriid, new { @class = "form-control" })*@
+    <br />
+
+    <button class="btn btn-primary">Kaydet</button>
+
+</form>
+

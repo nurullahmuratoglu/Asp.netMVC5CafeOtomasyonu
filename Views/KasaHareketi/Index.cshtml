@@ -1,0 +1,83 @@
+﻿@using Cafe_Otomasyonu.Models.siniflar
+@using System.Linq
+@model Cafe_Otomasyonu.Models.IEnumerable.Class1
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<style>
+</style>
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Geçmiş Kasa Hareketleri</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align:center;">
+                    <thead>
+                        <tr>
+                            <th>Hesap id</th>
+                            <th>Tarih</th>
+                            <th>Masa Adı</th>
+                            <th>Toplam Tutar</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Hesap id</th>
+                            <th>Tarih</th>
+                            <th>Masa Adı</th>
+                            <th>Toplam Tutar</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @{
+                            if (Model.Hesap1.Any())
+                            {
+                                foreach (var x in Model.Hesap1)
+                                {
+                                   
+                                    <tr>
+                                        <td>@x.Hesapid</td>
+                                        <td>@x.Tarih</td>
+                                        <td>@Model.Masa1.Where(y => y.Masaid == x.Masaid).Select(k => k.MasaAd).First()</td>
+                                        <td>@x.ToplamTutar</td>
+                                        <td style="text-align:center;">
+                                            <a href="/KasaHareketi/Detay/?hesapid=@x.Hesapid" class="btn btn-outline-info">Detay</a>
+
+
+                                        </td>
+
+                                    </tr>
+
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td> </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+</script>

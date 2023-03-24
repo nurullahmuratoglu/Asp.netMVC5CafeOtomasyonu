@@ -1,0 +1,84 @@
+﻿@using Cafe_Otomasyonu.Models.siniflar
+@using System.Linq;
+@model Cafe_Otomasyonu.Models.IEnumerable.Class1
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    String style = "";
+    var rezerve = "";
+
+ }
+
+
+<div class="card-body">
+    @foreach (var k in Model.Masa1)
+    {
+
+        if (Model.Siparis1.Where(x => x.Masaid == k.Masaid && x.Hesapid == null).Any())
+        {
+            style = "background:#10ff00;";
+        }
+        else if(Model.Rezerve1.Where(x => x.Masaid == k.Masaid && x.Durum == true).Any())
+        {
+            style = "background:#FFFF00;";
+        }
+        else
+        {
+            style = "";
+        }
+        if (Model.Rezerve1.Where(x => x.Masaid == k.Masaid && x.Durum == true).Any())
+        {
+            rezerve = "Rezerve adı: " + Model.Rezerve1.Where(x => x.Masaid == k.Masaid && x.Durum == true).Select(y => y.RezerveAd).First().ToUpper();
+        }
+        else
+        {
+            rezerve = "";
+
+        }
+        <a href="/Masa/MasaSiparis/@k.Masaid" style="text-decoration:none; ">
+
+            <div class="card" style="width: 17rem; float: left; margin-left: 1%; height: 17rem; margin-top:1%;@style">
+                <div class="card-body py-2 d-flex flex-row justify-content-between ">
+                    <div class="row-cols-xl-1" style="margin: auto; width: 14rem; height: 14rem; text-align: center;  ">
+                        <h1 class="m-md-5 font-weight-bold text-primary">@k.MasaAd</h1>
+                        @rezerve
+                    </div>
+                    <div class="dropdown no-arrow">
+
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                             aria-labelledby="dropdownMenuLink">
+
+                            <a class="dropdown-item" href="/Masa/MasaGetir/@k.Masaid">İSMİNİ DEĞİŞTİR</a>
+                            <a class="dropdown-item" href="/Masa/MasaSil/@k.Masaid">MASAYI KALDIR</a>
+                            <a class="dropdown-item" href="/Masa/Rezerve/?masaid=@k.Masaid">REZERVE ET</a>
+                            <a class="dropdown-item" href="/Masa/RezerveSil/?masaid=@k.Masaid">REZERVE KALDIR</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+
+    }
+
+    <div class="card" style="width: 17rem; float: left; margin-left: 1%; height: 17rem; margin-top:1%; background:#ebce2a">
+        <div class="card-body py-2 d-flex flex-row justify-content-between">
+            <a href="/Masa/MasaEkle/" style="text-decoration: none;">
+                <div class="row-cols-xl-1" style="margin: auto; width: 14rem; height: 14rem; text-align: center;  ">
+                    <h2 class="m-5 font-weight-bold text-primary">Masa Ekle</h2>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+

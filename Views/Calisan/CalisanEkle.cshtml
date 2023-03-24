@@ -1,0 +1,49 @@
+﻿@model Cafe_Otomasyonu.Models.siniflar.Calisan
+@{
+    ViewBag.Title = "CalisanEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.AdSoyad)
+    @Html.TextBoxFor(x => x.AdSoyad, new { @class = "form-control" })
+
+    @Html.LabelFor(x => x.Kullaniciadi)
+    @Html.TextBoxFor(x => x.Kullaniciadi, new { @class = "form-control" })
+
+    @Html.LabelFor(x => x.Sifre)
+    @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+
+
+    <br />
+    <div class="form-group" style="margin-left:10px; font-size:large;">
+        <label class="control-label col-md-2">
+           YETKİLER
+        </label><br />
+        <label class="checkbox-inline">
+            @Html.CheckBox("A", false )
+
+            Menü düzenleyebilme. (kategori, ürün ekleme)(A)
+        </label><br />
+        <label class="checkbox-inline">
+            @Html.CheckBox("B", false)
+            Sipariş alma, Masa ekleme ve düzenleme. (B)
+        </label><br />
+        <label class="checkbox-inline">
+            @Html.CheckBox("C", false)
+            Hesap Kesme(C)
+        </label><br />
+        <label class="checkbox-inline">
+            @Html.CheckBox("D", false)
+            Geçmişi görünteleme(D)
+        </label><br />
+        <label class="checkbox-inline">
+            @Html.CheckBox("E", false)
+            Çalışanları yönetme(E)
+        </label><br />
+    </div>
+
+    <button class="btn btn-info"> Kaydet</button>
+</form>
+
+

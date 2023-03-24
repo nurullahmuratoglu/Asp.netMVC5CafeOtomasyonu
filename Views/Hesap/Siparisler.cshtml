@@ -1,0 +1,70 @@
+﻿@using Cafe_Otomasyonu.Models.siniflar
+@using System.Linq;
+@model Cafe_Otomasyonu.Models.IEnumerable.Class1
+@{
+    ViewBag.Title = "Siparisler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3><a href="/Hesap/Index" style="text-decoration:none;">&larr; Masalara Dön</a></h3>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3" style="text-align:center;">
+        <h6 class="m-0 font-weight-bold text-primary">Siparişler</h6>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <tr>
+
+                <th>Sipariş İd</th>
+                <th>Urun Adı</th>
+                <th>Satış Fiyati</th>
+                <th>Adet</th>
+                <th>Toplam Fiyat</th>
+
+                <th></th>
+
+
+            </tr>
+            @if (Model.Siparis1 != null)
+            {
+                foreach (var x in @Model.Siparis1)
+                {
+                    <tr>
+                        <td>@x.Satisid</td>
+                        <td>@Model.Urun1.Where(y => y.Urunid == x.Urunid).Select(k => k.UrunAd).First() </td>
+                        <td>@Model.Urun1.Where(y => y.Urunid == x.Urunid).Select(k => k.SatisFiyat).First()</td>
+                        <td>
+                            <a href="/Hesap/Azalt/?satisid=@x.Satisid&masaid=@Model.masaid" style="font-size: large;color:black; border-width: 1px; text-decoration: none; background-color: lightgrey; border-color: cornflowerblue; padding-left: 7%; padding-right: 7%;">-</a>
+                            @x.Adet
+                            <a href="/Hesap/Artir/?satisid=@x.Satisid&masaid=@Model.masaid" style=" font-size:large ;color: black; border-width: 1px; text-decoration: none; background-color: lightgrey; border-color: cornflowerblue; padding-left: 7%; padding-right: 7%;">+</a>
+                        </td>
+                        <td>@x.Fiyat</td>
+
+                        <td><a href="/Hesap/SiparisSil/?satisid=@x.Satisid&masaid=@Model.masaid" class="btn btn-outline-danger">Sil</a></td>
+
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                    <td></td>
+
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<a href="/Hesap/Hesapkes/?id=@Model.masaid" class="btn btn-success btn-icon-split" style="width:100%;">
+
+    <span class="text">Hesap Kes</span>
+</a>
+
+

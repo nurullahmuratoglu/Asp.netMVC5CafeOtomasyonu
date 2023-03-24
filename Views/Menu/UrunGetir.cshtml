@@ -1,0 +1,30 @@
+﻿@model Cafe_Otomasyonu.Models.siniflar.Urun
+@{
+    ViewBag.Title = "UrunGuncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("UrunGuncelle", "Menu", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Urunid)
+    @Html.LabelFor(x => x.UrunAd)
+    @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Marka_Icerik)
+    @Html.TextBoxFor(x => x.Marka_Icerik, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.SatisFiyat)
+    @Html.TextBoxFor(x => x.SatisFiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Kategori)
+    @Html.DropDownListFor(x => x.Kategoriid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    @*@Html.TextBoxFor(x => x.Kategoriid, new { @class = "form-control" })*@
+    <br />
+
+
+
+
+    <button class="btn btn-warning">Güncelle</button>
+
+}

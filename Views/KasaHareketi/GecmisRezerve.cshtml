@@ -1,0 +1,86 @@
+﻿@using Cafe_Otomasyonu.Models.siniflar
+@using System.Linq
+@model Cafe_Otomasyonu.Models.IEnumerable.Class1
+@{
+    ViewBag.Title = "GecmisRezerve";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var hesapdurumu = "";
+}
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Geçmiş Rezervasyon Hareketleri</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align:center;">
+                    <thead>
+                        <tr>
+                            <th>rezervasyon id</th>
+                            <th>Tarih</th>
+                            <th>Müşteri Adı</th>
+                            <th>Masa Adı</th>
+                            <th>Durumu</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>rezervasyon id</th>
+                            <th>Tarih</th>
+                            <th>Müşteri Adı</th>
+                            <th>Masa Adı</th>
+                            <th>Durumu</th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @{
+                            if (Model.Rezerve1.Any())
+                            {
+                                foreach (var x in Model.Rezerve1)
+                                {
+                                    <tr>
+                                        <td>@x.Rezerveid</td>
+                                        <td>@x.Tarih</td>
+                                        <td>@x.RezerveAd</td>
+                                        <td>@Model.Masa1.Where(y => y.Masaid == x.Masaid).Select(z => z.MasaAd).First()</td>
+                                        <td>
+                                            @if (x.Durum == false)
+                                            {
+                                                hesapdurumu = "İptal Edildi";
+                                            }
+                                            else
+                                            {
+                                                hesapdurumu = "Halen Aktif";
+
+                                            }
+                                            @hesapdurumu
+
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

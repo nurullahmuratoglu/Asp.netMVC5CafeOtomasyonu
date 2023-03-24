@@ -1,0 +1,88 @@
+﻿@using Cafe_Otomasyonu.Models.siniflar
+@using System.Linq
+@model Cafe_Otomasyonu.Models.IEnumerable.Class1
+@{
+    ViewBag.Title = "SiparisGecmis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var hesapdurumu = "";
+}
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Geçmiş Sipariş Hareketleri</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align:center;">
+                    <thead>
+                        <tr>
+                            <th>Siparis id</th>
+                            <th>Ürün Adı</th>
+                            <th>Adet</th>
+                            <th>Toplam Tutar</th>
+                            <th>Masa Adı</th>
+                            <th>Hesap Durumu</th>
+
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Siparis id</th>
+                            <th>Ürün Adı</th>
+                            <th>Adet</th>
+                            <th>Toplam Tutar</th>
+                            <th>Masa Adı</th>
+                            <th>Hesap Durumu</th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @{
+                            if (Model.Siparis1.Any())
+                            {
+                                foreach (var x in Model.Siparis1)
+                                {
+                                    <tr>
+                                        <td>@x.Satisid</td>
+                                        <td>@Model.Urun1.Where(y => y.Urunid == x.Urunid).Select(k => k.UrunAd).First()</td>
+                                        <td>@x.Adet</td>
+                                        <td>@x.Fiyat</td>
+                                        <td>@Model.Masa1.Where(y => y.Masaid == x.Masaid).Select(k => k.MasaAd).First()</td>
+                                        <td>
+                                            @if (x.Hesapid != null)
+                                            {
+                                                hesapdurumu = "Kesildi";
+                                            }
+                                            else
+                                            {
+                                                hesapdurumu = "Masa Halen Aktif";
+
+                                            }
+                                            @hesapdurumu
+
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

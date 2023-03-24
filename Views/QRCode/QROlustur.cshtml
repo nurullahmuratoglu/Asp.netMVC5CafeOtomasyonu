@@ -1,0 +1,18 @@
+﻿@using Cafe_Otomasyonu.Models
+@model Cafe_Otomasyonu.Models.IEnumerable.Class1
+@{
+    ViewBag.Title = "QRoluştur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+
+
+@Html.GenerateQrCode("https://cafeotomasyonu.azurewebsites.net/QRCode/Index/", 400, 400,0,Model.isletmeid)
+
+
+
+
+
+

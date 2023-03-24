@@ -1,0 +1,40 @@
+﻿@using Cafe_Otomasyonu.Models.siniflar
+@model List<Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@foreach (var k in Model)
+{
+
+    <div class="card" style="width: 20rem; float: left; margin-left: 15px; height: 10rem;margin-top:10px;">
+        <div class="card-body" style="margin-top: 3%;">
+            <a href="/Menu/Urunler/@k.Kategoriid" style="text-decoration:none;text-align:center;"><h3 class="card-title">@k.KategoriAd.ToUpper()</h3></a>
+            <div class="row" style="margin-top: 5%; display: flex; justify-content: center; align-items: center;">
+                <a href="/Menu/KategoriGetir/@k.Kategoriid" class="btn btn-info">Kategori Güncelle</a>
+                <a href="/Menu/KategoriSil/@k.Kategoriid" class="btn btn-danger" style="margin-left:3%;">Kategori Sil</a>
+            </div>
+        </div>
+    </div>
+}
+<a href="/Menu/KategoriEkle/">
+    <div class="card" style="width: 20rem; float: left; margin-left: 15px; height: 10rem; margin-top: 10px;">
+        <div class="card-body" style="display: flex; justify-content: center; align-items: center; ">
+            <h2 class="card-title">Yeni Kategori Ekle</h2>
+
+
+
+        </div>
+    </div>
+</a>
+<a href="/Menu/UrunEkle/">
+    <div class="card" style="width: 20rem; float: left; margin-left: 15px; height: 10rem; margin-top: 10px;">
+        <div class="card-body" style="display: flex; justify-content: center; align-items: center; ">
+            <h2 class="card-title" >Yeni Ürün Ekle</h2>
+
+
+        </div>
+    </div>
+</a>

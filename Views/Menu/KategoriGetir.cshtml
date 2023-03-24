@@ -1,0 +1,26 @@
+﻿@model Cafe_Otomasyonu.Models.siniflar.Kategori
+@{
+    ViewBag.Title = "KategoriGuncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>KategoriGuncelle</h2>
+
+@using (Html.BeginForm("KategoriGuncelle", "Menu", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.KategoriAd)
+        @Html.TextBoxFor(x => x.KategoriAd, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.Kategoriid)
+
+
+
+    </div>
+    <br />
+    <button class="btn btn-facebook">
+        Güncelle
+    </button>
+}
+
+
+
+

@@ -1,0 +1,34 @@
+﻿@using Cafe_Otomasyonu.Models.siniflar
+@model List<Urun>
+@{
+    ViewBag.Title = "Urunler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 class="breadcrumb-item active">Kategori Adı: @ViewBag.d</h2>
+
+<table class="table table-hover">
+    <tr>
+
+        <th>Urun id</th>
+        <th>Urun Adı</th>
+        <th>Marka-İçerik</th>
+        <th>Satış Fiyatı</th>
+        <th></th>
+        <th></th>
+      
+    </tr>
+    @foreach(var x in Model) { 
+    <tr>
+        <td>@x.Urunid </td>
+        <td>@x.UrunAd </td>
+        <td>@x.Marka_Icerik </td>
+        <td>@x.SatisFiyat</td>
+
+        <td><a href="/Menu/UrunSil/@x.Urunid" class="btn btn-outline-danger">Sil</a></td>
+        <td><a href="/Menu/UrunGetir/@x.Urunid" class="btn btn-outline-info">Güncelle</a></td>
+    </tr>
+    }
+
+</table>

@@ -1,0 +1,34 @@
+﻿@using System.Globalization;
+@using Cafe_Otomasyonu.Models.siniflar;
+@model Cafe_Otomasyonu.Models.IEnumerable.Class1
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MusteriMenu.cshtml";
+}
+
+
+<div class="card shadow mb-lg-5">
+
+    <div class="card-header py-4">
+
+        <h2 class="m-0 font-weight-bold text-primary" style="text-align:center;">@ViewBag.d.ToUpper()</h2>
+    </div>
+    <div class="col">
+        <span style="font-size:x-large;"> <a href="/QRCode/Index/@Model.isletmeid" style="text-decoration:none;">&larr; Menüye Dön</a></span>
+    </div>
+    <div class="card-body">
+        @foreach (var k in Model.Urun1)
+        {
+
+            <div class="card" style="width: 17rem; float: left; margin-left: 5%; height: 12rem; margin-top:3%; margin-bottom:3%">
+                <div class="card-body">
+                    <a href="#" style="text-decoration:none;"><h2 class="card-title" style="text-align:center;">@k.UrunAd.ToUpper()</h2></a>
+                    <p class="card-text">İçerik: <a href="#" style="text-decoration:none;">@k.Marka_Icerik</a></p>
+                    <p class="card-text">Fiyat: <a href="#" style="text-decoration:none;">@k.SatisFiyat &#8378;</a></p>
+
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

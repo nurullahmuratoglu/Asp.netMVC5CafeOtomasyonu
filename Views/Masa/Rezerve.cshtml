@@ -1,0 +1,14 @@
+﻿@using Cafe_Otomasyonu.Models.siniflar
+@using System.Linq;
+@model Cafe_Otomasyonu.Models.IEnumerable.Class1
+@{
+    ViewBag.Title = "Rezerve";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rezerve</h2>
+<form class="form-group" masaid="@Model.masaid" method="post">
+    <input type="text" class="form-control" name="RezerveAd" Placeholder="Adınız" required="" />
+    <br />
+    <input type="submit" value="Kaydet">
+</form>

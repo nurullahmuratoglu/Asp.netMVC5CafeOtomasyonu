@@ -1,0 +1,29 @@
+﻿@using Cafe_Otomasyonu.Models.siniflar;
+@model List<Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MusteriMenu.cshtml";
+}
+
+
+<div class="card shadow mb-lg-5">
+    <div class="card-header py-4">
+        <h2 class="m-0 font-weight-bold text-primary" style="text-align:center;">@ViewBag.dgr1.ToUpper()</h2>
+    </div>
+    <div class="col">
+                
+    </div><div class="card-body">
+
+        @foreach (var k in Model)
+        {
+            <a href="/MusteriMenu/Urun/@k.Kategoriid">
+                <div class="card" style="width: 17rem; float: left; margin-left: 5%; height: 12rem; margin-top:3%; margin-bottom:3%">
+                    <div class="card-body" style="display: flex; justify-content: center; align-items: center; ">
+                        <h2 class="card-title" style="text-align:center;">@k.KategoriAd.ToUpper()</h2>
+
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>

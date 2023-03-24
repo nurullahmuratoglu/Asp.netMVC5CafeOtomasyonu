@@ -1,0 +1,62 @@
+﻿@using Cafe_Otomasyonu.Models.siniflar
+@using System.Linq
+@model Cafe_Otomasyonu.Models.IEnumerable.Class1
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@{
+    var masaid = Model.Hesap1.Select(y => y.Masaid).First();
+}
+<span style="font-size:x-large;"><a href="/KasaHareketi/Index/" style="text-decoration:none;">&larr; Kasa Hareketleri </a></span>
+<br />
+<br />
+
+
+<div class="container">
+    <span style=" font-weight: bold;">
+        Tarih :
+    </span>@Model.Hesap1.Select(y => y.Tarih).First()
+    <br />
+    <span style=" font-weight: bold;">
+        Masa Adı :
+    </span>
+    @Model.Masa1.Where(y => y.Masaid == masaid).Select(k => k.MasaAd).First()
+    <br />
+    <span style=" font-weight: bold;">
+    </span>
+</div>
+
+
+<table class="table table-borderless">
+    <tr style="border-bottom: 1px solid #ddd;">
+        <td></td>
+        <td></td>
+        <td></td>
+
+
+    </tr>
+    @foreach (var x in Model.Siparis1)
+    {
+        <tr>
+
+            <td style="float:right;">@x.Adet adet </td>
+            <td>@Model.Urun1.Where(y => y.Urunid == x.Urunid).Select(k => k.UrunAd).First()</td>
+            <td>@x.Fiyat &#8378;</td>
+        </tr>
+    }
+    <tr style="border-bottom: 2px solid #ddd;">
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr>
+
+        <td></td>
+        <td style=" font-weight: bold;">Toplam Fiyat: </td>
+        <td style=" font-weight: bold;">@Model.Hesap1.Select(y => y.ToplamTutar).First() &#8378</td>
+    </tr>
+</table>
+<div class="divider"></div>
