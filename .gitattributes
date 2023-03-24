@@ -1,5 +1,6 @@
 Content/** linguist-vendored
 Views/** linguist-vendored
+*.js linguist-detectable=false
 
 
 ###############################################################################
