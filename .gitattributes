@@ -3,6 +3,7 @@
 *.html linguist-detectable=false
 *.htm inguist-detectable=false
 *.cshtml inguist-detectable=false
+Views/** linguist-vendored
 
 
 ###############################################################################
