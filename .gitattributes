@@ -1,7 +1,7 @@
-*.html linguist-vendored
+*.html linguist-detectable=false
 *.js linguist-detectable=false
 *.css linguist-detectable=false
-*.c# linguist-vendored
+*.c# linguist-detectable=true
 
 
 ###############################################################################
