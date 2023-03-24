@@ -1,4 +1,4 @@
-*.html linguist-detectable=false
+*.html linguist-vendored
 *.js linguist-detectable=false
 *.css linguist-detectable=false
 
